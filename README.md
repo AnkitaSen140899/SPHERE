@@ -1,2 +1,2 @@
 # SPHERE (TYPE 1)
-![Sphere_new](https://user-images.githubusercontent.com/102920189/162578620-10afdc55-d127-4b22-8a10-f63062208eb7.png)
+![image](https://user-images.githubusercontent.com/102920189/162584567-32d43788-4c4e-4532-90eb-6b52ae1d781c.png)
