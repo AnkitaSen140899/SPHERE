@@ -3,7 +3,7 @@
 // Loading
 const textureLoader = new THREE.TextureLoader()
 
-const normalTexture = textureLoader.load('NormalMap.png')
+const normalTexture = textureLoader.load('NormalMap.jpg')
 
 // Debug
 
