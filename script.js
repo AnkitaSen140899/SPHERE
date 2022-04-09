@@ -1,4 +1,4 @@
-import textureImg from "/textures/NormalMap.png";
+import textureImg from "/texture/NormalMap.png";
 
 // Loading
 const textureLoader = new THREE.TextureLoader()
