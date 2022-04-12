@@ -43,11 +43,11 @@ scene.add(pointLight)
 
 //Light 2
 
-// const pointLight2 = new THREE.PointLight(0xff0000, 2)
-// pointLight2.position.set(-1.86,1,-1.65)
-// pointLight2.intensity = 10
+const pointLight2 = new THREE.PointLight(0xff0000, 2)
+pointLight2.position.set(-1.86,1,-1.65)
+pointLight2.intensity = 10
 
-// scene.add(pointLight2)
+scene.add(pointLight2)
 
 // const light1 = gui.addFolder('Light 1')
 
