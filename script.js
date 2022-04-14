@@ -22,6 +22,7 @@ const EARTHgeometry = new THREE.SphereBufferGeometry(.2, 64, 64)
 // Materials
 
 const EARTHmaterial = new THREE.MeshStandardMaterial()
+EARTHmaterial.metalness = 0
 EARTHmaterial.roughness = 0.4
 EARTHmaterial.map = normalTexture;
 
