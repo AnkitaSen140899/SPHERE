@@ -37,10 +37,11 @@ SUNmaterial.color = new THREE.Color( 0xfff917 )
 
 // Mesh
 const sphereEARTH = new THREE.Mesh(EARTHgeometry,EARTHmaterial)
-scene.add(sphereEARTH)
+
 
 const sphere = new THREE.Mesh(SUNgeometry,SUNmaterial)
 scene.add(sphere)
+sphere.add(sphereEARTH)
 
 // Lights
 
@@ -170,7 +171,7 @@ const tick = () =>
     const elapsedTime = clock.getElapsedTime()
 
     // Update objects
-    sphere.rotation.y = .5 * elapsedTime
+    sphere.rotation.z = .5 * elapsedTime
 
     sphere.rotation.y += .5 * (targetX - sphere.rotation.y)
     sphere.rotation.x += .05 * (targetY - sphere.rotation.x)
@@ -181,7 +182,7 @@ const tick = () =>
     sphereEARTH.rotation.y += .5 * (targetX - sphereEARTH.rotation.y)
     sphereEARTH.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
     sphereEARTH.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
-    camere.rotateZ(0.05)
+    
     
     // Update Orbital Controls
     // controls.update()
