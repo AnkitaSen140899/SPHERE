@@ -181,6 +181,7 @@ const tick = () =>
     sphereEARTH.rotation.y += .5 * (targetX - sphereEARTH.rotation.y)
     sphereEARTH.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
     sphereEARTH.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
+    camere.rotateZ(0.05)
     
     // Update Orbital Controls
     // controls.update()
