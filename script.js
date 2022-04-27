@@ -32,7 +32,7 @@ const MOONgeometry = new THREE.SphereBufferGeometry(0.1, 64, 64)
 const Marsgeometry = new THREE.SphereBufferGeometry(0.16, 64, 64)
 const Jupitergeometry = new THREE.SphereBufferGeometry(0.5, 64, 64)
 const Saturngeometry = new THREE.SphereBufferGeometry(0.4, 64, 64)
-const SaturnRinggeometry = new THREE.RingBufferGeometry(0.5,0.65,60)
+//const SaturnRinggeometry = new THREE.RingBufferGeometry(0.5,0.65,60)
 const Uranusgeometry = new THREE.SphereBufferGeometry(0.35, 64, 64)
 const Neptunegeometry = new THREE.SphereBufferGeometry(0.3, 64, 64)
 
@@ -93,9 +93,9 @@ SaturnMaterial.roughness = 0.4
 SaturnMaterial.map = normaltextureSaturn;
 const sphereSaturn = new THREE.Mesh(Saturngeometry,SaturnMaterial)
 
-const SaturnRingMAterial = new THREE.MeshBasicMaterial()
-SaturnRingMAterial.map = normaltextureSaturnRing;
-const sphereSaturnRing = new THREE.Mesh(SaturnRinggeometry,SaturnRingMAterial)
+// const SaturnRingMAterial = new THREE.MeshBasicMaterial()
+// SaturnRingMAterial.map = normaltextureSaturnRing;
+// const sphereSaturnRing = new THREE.Mesh(SaturnRinggeometry,SaturnRingMAterial)
 
 const SUNmaterial = new THREE.MeshStandardMaterial()
 SUNmaterial.transparent = true
@@ -112,7 +112,7 @@ scene.add(sphere)
 scene.add(sphereEARTH)
 sphereEARTH.add(sphereMOON)
 scene.add(sphereSaturn)
-sphereSaturn.add(sphereSaturnRing)
+// sphereSaturn.add(sphereSaturnRing)
 scene.add(sphereMercury)
 scene.add(sphereVenus)
 scene.add(sphereMars)
