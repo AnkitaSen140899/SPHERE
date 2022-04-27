@@ -1,3 +1,4 @@
+// Loading
 const textureLoader = new THREE.TextureLoader()
 
 const normalTexture = textureLoader.load('./earthmap.jpg')
@@ -12,8 +13,9 @@ const normaltextureJupiter = textureLoader.load('./jupiter.jpg')
 const normaltextureUranus = textureLoader.load('./uranus.jpg')
 const normaltextureNeptune = textureLoader.load('./neptune.jpg')
 
+
 // Debug
-const gui = new dat.GUI()
+
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -117,7 +119,6 @@ scene.add(sphereMars)
 scene.add(sphereJupiter)
 scene.add(sphereUranus)
 scene.add(sphereNeptune)
-//sphereSaturnRing.position.y = 10
 
 const loader = new THREE.TextureLoader();
 loader.load('./Star.jpg' , function(texture)
@@ -125,7 +126,16 @@ loader.load('./Star.jpg' , function(texture)
              scene.background = texture;  
             });
 
+
 // Lights
+
+const pointLight = new THREE.PointLight(0xffffff, 0.1)
+pointLight.position.x = 2
+pointLight.position.y = 3
+pointLight.position.z = 4
+scene.add(pointLight)
+
+//Light 2
 
 const pointLight = new THREE.PointLight(0xffffff, 2)
 pointLight.position.x = 0
@@ -277,7 +287,7 @@ const tick = () =>
     const elapsedTime = clock.getElapsedTime()
 
     // Update objects
-    sphere.rotation.z = 0.5 * elapsedTime
+   sphere.rotation.z = 0.5 * elapsedTime
 
     sphere.rotation.y += .5 * (targetX - sphere.rotation.y)
     sphere.rotation.x += .05 * (targetY - sphere.rotation.x)
@@ -352,20 +362,6 @@ const tick = () =>
     sphereNeptune.position.x = 9.7 * Math.cos(r8)
     sphereNeptune.position.y = 6.7 * Math.sin(r8)
     
-
-    
-
-    
-    // direction vector for movement
-    // const direction = new THREE.Vector3( 3, 3, 4 );
-
-    
-    // const vector = direction.multiplyScalar( 0.5,0.5,0.5 );
-    // sphereEARTH.x += vector.x;
-    // sphereEARTH.y += vector.y;
-    // sphereEARTH.z += vector.z;
-    
-
     // Update Orbital Controls
     // controls.update()
 
