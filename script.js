@@ -282,7 +282,7 @@ const tick = () =>
     const elapsedTime = clock.getElapsedTime()
 
     // Update objects
-   sphere.rotation.z = 0.5 * elapsedTime
+    sphere.rotation.z = 0.5 * elapsedTime
 
     sphere.rotation.y += .5 * (targetX - sphere.rotation.y)
     sphere.rotation.x += .05 * (targetY - sphere.rotation.x)
@@ -293,7 +293,7 @@ const tick = () =>
     sphereMercury.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
     sphereMercury.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
     sphereMercury.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
-    sphereMercury.position.x = 2.5 * Math.cos(r1)
+    sphereMercury.position.x = 3.5 * Math.cos(r1)
     sphereMercury.position.y = 1.5 * Math.sin(r1)
 
     const r2 = Date.now() * 0.0007;
@@ -301,7 +301,7 @@ const tick = () =>
     sphereVenus.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
     sphereVenus.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
     sphereVenus.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
-    sphereVenus.position.x = 3.5 * Math.cos(r2)
+    sphereVenus.position.x = 4.5 * Math.cos(r2)
     sphereVenus.position.y = 2 * Math.sin(r2)
     
     //sphereEARTH.position.y = -1
@@ -312,9 +312,9 @@ const tick = () =>
     
     const r3 = Date.now() * 0.0006;
     
-    sphereEARTH.position.x = 5 * Math.cos(r3)
+    sphereEARTH.position.x = 6 * Math.cos(r3)
     sphereEARTH.position.y = 2.5 * Math.sin(r3)
-    //sphereEARTH.position.z = 2.5 * Math.sin(r)
+    // sphereEARTH.position.z = 0.1 * Math.sin(r)
     sphereMOON.position.x = -0.6
 
     const r4 = Date.now() * 0.0005;
@@ -322,7 +322,7 @@ const tick = () =>
     sphereMars.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
     sphereMars.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
     sphereMars.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
-    sphereMars.position.x = 6 * Math.cos(r4)
+    sphereMars.position.x = 7 * Math.cos(r4)
     sphereMars.position.y = 3.6 * Math.sin(r4)
 
     const r5 = Date.now() * 0.0004;
@@ -330,7 +330,7 @@ const tick = () =>
     sphereJupiter.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
     sphereJupiter.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
     sphereJupiter.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
-    sphereJupiter.position.x = 7 * Math.cos(r5)
+    sphereJupiter.position.x = 8 * Math.cos(r5)
     sphereJupiter.position.y = 4.3 * Math.sin(r5)
 
     const r6 = Date.now() * 0.0003;
@@ -338,7 +338,7 @@ const tick = () =>
     sphereSaturn.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
     sphereSaturn.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
     sphereSaturn.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
-    sphereSaturn.position.x = 8 * Math.cos(r6)
+    sphereSaturn.position.x = 9 * Math.cos(r6)
     sphereSaturn.position.y = 5.5 * Math.sin(r6)
 
     const r7 = Date.now() * 0.00025;
@@ -346,7 +346,7 @@ const tick = () =>
     sphereUranus.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
     sphereUranus.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
     sphereUranus.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
-    sphereUranus.position.x = 9 * Math.cos(r7)
+    sphereUranus.position.x = 10 * Math.cos(r7)
     sphereUranus.position.y = 6 * Math.sin(r7)
 
     const r8 = Date.now() * 0.0002;
@@ -354,8 +354,9 @@ const tick = () =>
     sphereNeptune.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
     sphereNeptune.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
     sphereNeptune.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
-    sphereNeptune.position.x = 9.7 * Math.cos(r8)
+    sphereNeptune.position.x = 10.8 * Math.cos(r8)
     sphereNeptune.position.y = 6.7 * Math.sin(r8)
+    
     
     // Update Orbital Controls
     // controls.update()
