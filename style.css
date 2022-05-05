@@ -14,6 +14,8 @@ body
 
 body {
     overflow-x: hidden;
+    overflow-y: scroll;
+    
     background-image:url("Star.jpg");
     min-height: 100%;
 /*     background-repeat: no-repeat;
