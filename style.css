@@ -13,13 +13,8 @@ body
 }
 
 body {
-    overflow-x: hidden;
-    background-image:url("Star.jpg");
-    min-height: 100%;
-/*     background-repeat: no-repeat;
-    background-position: center; */
-    background-attachment: fixed;
-    background-size: cover;
+    overflow: hidden;
+    
 }
 
 .webgl
