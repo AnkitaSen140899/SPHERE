@@ -9,6 +9,51 @@
 <body>
     <div class="container">
     </div>
+    
+    <script>
+         // Our Javascript will go here.
+
+         const textureLoader = new THREE.TextureLoader()
+         const normalTexturestar = textureLoader.load('./Star.jpg')
+         // This scene will be a 3D world where 3D objects will be added inside it.
+         var scene = new THREE.Scene();
+        // The value that has been copied  are parameters to the camera that will be present in the three.js scene
+         var camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight, 1,10000);
+        // If we change camera position coordinates, camera will move, set camera's position to z
+        camera.position.z = 0;
+
+         // This is renderer it is required to render scene 
+         var renderer = new THREE.WebGLRenderer();
+         renderer.setSize(window.innerWidth, window.innerHeight);
+         document.body.appendChild(renderer.domElement);
+
+         // Lets create a box
+         // We will need to create a geometry of the box first, follow these steps
+         var geometry = new THREE.BoxGeometry(700, 700, 700, 10, 10, 10);
+
+         // Material is a layer that will be added on the geometry
+         var material = new THREE.MeshBasicMaterial({map: normalTexturestar, side: THREE.BackSide});
+
+
+         // Creating a mesh object from the box geometry and a material
+         var cube = new THREE.Mesh(geometry, material);
+        
+        // Adding that cube in scene
+         scene.add(cube);
+
+         // Add a function to render
+         function render() {
+                requestAnimationFrame(render);
+                cube.rotation.x += 0.005;
+                cube.rotation.y += 0.005;
+                renderer.render(scene, camera);
+            }
+            // We will need to call this function from somewhere
+            render();
+            
+         
+      </script>
+    
     <canvas class="webgl"></canvas>
     <section></section>
     <script type="text/javascript" src="three.js"></script>
