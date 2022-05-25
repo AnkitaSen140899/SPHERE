@@ -1,6 +1,8 @@
 // Loading
 const textureLoader = new THREE.TextureLoader()
 
+const normalTexturestar = textureLoader.load('./Star.jpg')
+
 const normalTexture = textureLoader.load('./earthmap.jpg')
 const normalTextureSUN = textureLoader.load('./SUN.jpg')
 const normaltextureMOON = textureLoader.load('./MOON.jpg')
@@ -35,6 +37,12 @@ const Saturngeometry = new THREE.SphereBufferGeometry(0.4, 64, 64)
 const SaturnRinggeometry = new THREE.RingBufferGeometry(0.5,0.65,60)
 const Uranusgeometry = new THREE.SphereBufferGeometry(0.35, 64, 64)
 const Neptunegeometry = new THREE.SphereBufferGeometry(0.3, 64, 64)
+
+// We will need to create a geometry of the box first, follow these steps
+var geometry = new THREE.BoxGeometry(700, 700, 700, 10, 10, 10);
+// Material is a layer that will be added on the geometry
+var material = new THREE.MeshBasicMaterial({map: normalTexturestar, side: THREE.BackSide});
+var cube = new THREE.Mesh(geometry, material);
 
 // Materials
 
@@ -119,6 +127,7 @@ scene.add(sphereMars)
 scene.add(sphereJupiter)
 scene.add(sphereUranus)
 scene.add(sphereNeptune)
+scene.add(cube);
 
 // const loader = new THREE.TextureLoader();
 // loader.load('./Star.jpg' , function(texture)
@@ -216,10 +225,10 @@ window.addEventListener('resize', () =>
  * Camera
  */
 // Base camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1,10000)
 camera.position.x = 0
 camera.position.y = 0
-camera.position.z = 10
+camera.position.z = 0
 scene.add(camera)
 
 // Controls
@@ -229,12 +238,13 @@ scene.add(camera)
 /**
  * Renderer
  */
-const renderer = new THREE.WebGLRenderer({
+var renderer = new THREE.WebGLRenderer({
     canvas: canvas,
     alpha: true
 })
-renderer.setSize(sizes.width, sizes.height)
+renderer.setSize(window.innerWidth, window.innerHeight)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+document.body.appendChild(renderer.domElement);
 
 /**
  * Animate
@@ -362,7 +372,14 @@ const tick = () =>
     // controls.update()
 
     // Render
-    renderer.render(scene, camera)
+    function render() {
+                requestAnimationFrame(render);
+                cube.rotation.x += 0.005;
+                cube.rotation.y += 0.005;
+                renderer.render(scene, camera);
+            }
+            // We will need to call this function from somewhere
+            render();
 
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
