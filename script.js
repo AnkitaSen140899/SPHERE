@@ -97,161 +97,145 @@ var MOONmaterial= new THREE.MeshBasicMaterial({roughness: 0.4,opacity: 1, map: n
         //  MOONmaterial.map = normaltextureMOON;;
 var sphereMOON = new THREE.Mesh(MOONgeometry,MOONmaterial);
              
-         var SaturnMaterial = new THREE.MeshBasicMaterial({roughness: 0.4,opacity: 1, map: normaltextureSaturn});
-        //  SaturnMaterial.opacity = 0.9;
-        //  SaturnMaterial.roughness = 0.4;
-        //  SaturnMaterial.map = normaltextureSaturn;
-         var sphereSaturn = new THREE.Mesh(Saturngeometry,SaturnMaterial);
-             
-         var SaturnRingMAterial = new THREE.MeshBasicMaterial({map: normaltextureSaturnRing});
-        //  SaturnRingMAterial.map = normaltextureSaturnRing;
-         var sphereSaturnRing = new THREE.Mesh(SaturnRinggeometry,SaturnRingMAterial);
-             
-             
-        //  // Material is a layer that will be added on the geometry
-         var EARTHmaterial = new THREE.MeshBasicMaterial({transparent: true,opacity: 1,metalness: 0,roughness: 0.3, map: normalTexture});
-         var SUNmaterial = new THREE.MeshBasicMaterial({transparent: true,opacity: 1,metalness: 0,roughness: 0.3, map: normalTextureSUN});
-         var material = new THREE.MeshBasicMaterial({map: normalTexturestar, side: THREE.BackSide});
-        
-        //  // Creating a mesh object from the box geometry and a material
-         var sphere = new THREE.Mesh(SUNgeometry, SUNmaterial);
-         var cube = new THREE.Mesh(geometry, material);
-         var sphereEARTH = new THREE.Mesh(EARTHgeometry,EARTHmaterial);
-        // // Adding that cube in scene
-         scene.add(sphere);
-         scene.add(sphereEARTH);
-         scene.add(cube);
-        
-         
-         sphereEARTH.add(sphereMOON);
-         scene.add(sphereSaturn);
-         sphereSaturn.add(sphereSaturnRing);
-         scene.add(sphereMercury);
-         scene.add(sphereVenus);
-         scene.add(sphereMars);
-         scene.add(sphereJupiter);
-         scene.add(sphereUranus);
-         scene.add(sphereNeptune);
-
-
-         document.addEventListener('mousemove', onDocumentMouseMove)
-
-         let mouseX = 0
-         let mouseY = 0
-             
-         let targetX = 0
-         let targetY = 0
-             
-         const windowHalfX = window.innerWidth / 2;
-         const windowHalfY = window.innerHeight / 2;
-             
-         function onDocumentMouseMove(event) {
-         
-             mouseX = (event.clientX - windowHalfX)
-             mouseY = (event.clientY - windowHalfY)
-         }
-         const updateSphere = (event) => {
-             sphereMercury.position.y = window.scrollY * .001
-             sphereVenus.position.y = window.scrollY * .001
-             sphereEARTH.position.y = window.scrollY * .001
-             sphereMars.position.y = window.scrollY * .001
-             sphereJupiter.position.y = window.scrollY * .001
-             sphereSaturn.position.y = window.scrollY * .001
-             sphereUranus.position.y = window.scrollY * .001
-             sphereNeptune.position.y = window.scrollY * .001
-         }
-
-         window.addEventListener('scroll', updateSphere);
-         const clock = new THREE.Clock()
-
-         // Add a function to render
-         function render() {
-                requestAnimationFrame(render);
-                targetX = mouseX * .001
-                targetY = mouseY * .001
-
-
-                const elapsedTime = clock.getElapsedTime()
-                sphere.rotation.z = 0.5 * elapsedTime
-
-                sphere.rotation.y += .5 * (targetX - sphere.rotation.y)
-                sphere.rotation.x += .05 * (targetY - sphere.rotation.x)
-                sphere.position.z += -.05 * (targetY - sphere.rotation.x)
-
-                
-                const r1 = Date.now() * 0.0009;
-                sphereMercury.rotation.z = 1.2 * elapsedTime
-                sphereMercury.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
-                sphereMercury.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
-                sphereMercury.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
-                sphereMercury.position.x = 3.5 * Math.cos(r1)
-                sphereMercury.position.y = 1.5 * Math.sin(r1)
-
-                const r2 = Date.now() * 0.0007;
-                sphereVenus.rotation.z = 1.2 * elapsedTime
-                sphereVenus.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
-                sphereVenus.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
-                sphereVenus.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
-                sphereVenus.position.x = 4.5 * Math.cos(r2)
-                sphereVenus.position.y = 2 * Math.sin(r2)
-
-                //sphereEARTH.position.y = -1
-                sphereEARTH.rotation.z = 1.2 * elapsedTime
-                sphereEARTH.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
-                sphereEARTH.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
-                sphereEARTH.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
-
-                const r3 = Date.now() * 0.0006;
-
-                sphereEARTH.position.x = 6 * Math.cos(r3)
-                sphereEARTH.position.y = 2.5 * Math.sin(r3)
-                // sphereEARTH.position.z = 0.1 * Math.sin(r)
-                sphereMOON.position.x = -0.6
-
-                const r4 = Date.now() * 0.0005;
-                sphereMars.rotation.z = 1.2 * elapsedTime
-                sphereMars.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
-                sphereMars.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
-                sphereMars.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
-                sphereMars.position.x = 7 * Math.cos(r4)
-                sphereMars.position.y = 3.6 * Math.sin(r4)
-
-                const r5 = Date.now() * 0.0004;
-                sphereJupiter.rotation.z = 1.2 * elapsedTime
-                sphereJupiter.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
-                sphereJupiter.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
-                sphereJupiter.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
-                sphereJupiter.position.x = 8 * Math.cos(r5)
-                sphereJupiter.position.y = 4.3 * Math.sin(r5)
-
-                const r6 = Date.now() * 0.0003;
-                sphereSaturn.rotation.z = 1.2 * elapsedTime
-                sphereSaturn.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
-                sphereSaturn.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
-                sphereSaturn.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
-                sphereSaturn.position.x = 9 * Math.cos(r6)
-                sphereSaturn.position.y = 5.5 * Math.sin(r6)
-
-                const r7 = Date.now() * 0.00025;
-                sphereUranus.rotation.z = 1.2 * elapsedTime
-                sphereUranus.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
-                sphereUranus.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
-                sphereUranus.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
-                sphereUranus.position.x = 10 * Math.cos(r7)
-                sphereUranus.position.y = 6 * Math.sin(r7)
-
-                const r8 = Date.now() * 0.0002;
-                sphereNeptune.rotation.z = 1.2 * elapsedTime
-                sphereNeptune.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
-                sphereNeptune.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
-                sphereNeptune.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
-                sphereNeptune.position.x = 10.8 * Math.cos(r8)
-                sphereNeptune.position.y = 6.7 * Math.sin(r8)
+var SaturnMaterial = new THREE.MeshBasicMaterial({roughness: 0.4,opacity: 1, map: normaltextureSaturn});
+/  SaturnMaterial.opacity = 0.9;
+/  SaturnMaterial.roughness = 0.4;
+/  SaturnMaterial.map = normaltextureSaturn;
+var sphereSaturn = new THREE.Mesh(Saturngeometry,SaturnMaterial);
     
-                
-                cube.rotation.x += 0.002;
-                cube.rotation.y += 0.002;
-                renderer.render(scene, camera);
-            }
-            // We will need to call this function from somewhere
-            render();
+var SaturnRingMAterial = new THREE.MeshBasicMaterial({map: normaltextureSaturnRing});
+/  SaturnRingMAterial.map = normaltextureSaturnRing;
+var sphereSaturnRing = new THREE.Mesh(SaturnRinggeometry,SaturnRingMAterial);
+    
+    
+/  // Material is a layer that will be added on the geometry
+var EARTHmaterial = new THREE.MeshBasicMaterial({transparent: true,opacity: 1,metalness: 0,roughness: 0.3, map: normalTexture});
+var SUNmaterial = new THREE.MeshBasicMaterial({transparent: true,opacity: 1,metalness: 0,roughness: 0.3, map: normalTextureSUN});
+var material = new THREE.MeshBasicMaterial({map: normalTexturestar, side: THREE.BackSide});
+/  // Creating a mesh object from the box geometry and a material
+var sphere = new THREE.Mesh(SUNgeometry, SUNmaterial);
+var cube = new THREE.Mesh(geometry, material);
+var sphereEARTH = new THREE.Mesh(EARTHgeometry,EARTHmaterial);
+/ // Adding that cube in scene
+scene.add(sphere);
+scene.add(sphereEARTH);
+scene.add(cube);
+
+sphereEARTH.add(sphereMOON);
+scene.add(sphereSaturn);
+sphereSaturn.add(sphereSaturnRing);
+scene.add(sphereMercury);
+scene.add(sphereVenus);
+scene.add(sphereMars);
+scene.add(sphereJupiter);
+scene.add(sphereUranus);
+scene.add(sphereN
+document.addEventListener('mousemove', onDocumentMo
+let mouseX = 0
+let mouseY = 0
+    
+let targetX = 0
+let targetY = 0
+    
+const windowHalfX = window.innerWidth / 2;
+const windowHalfY = window.innerHeight / 2;
+    
+function onDocumentMouseMove(event) {
+
+    mouseX = (event.clientX - windowHalfX)
+    mouseY = (event.clientY - windowHalfY)
+}
+const updateSphere = (event) => {
+    sphereMercury.position.y = window.scrollY * .001
+    sphereVenus.position.y = window.scrollY * .001
+    sphereEARTH.position.y = window.scrollY * .001
+    sphereMars.position.y = window.scrollY * .001
+    sphereJupiter.position.y = window.scrollY * .001
+    sphereSaturn.position.y = window.scrollY * .001
+    sphereUranus.position.y = window.scrollY * .001
+    sphereNeptune.position.y = window.scrollY * .001
+
+window.addEventListener('scroll', updateSphere);
+const clock = new THREE
+// Add a function to render
+function render() {
+    requestAnimationFrame(render);
+    targetX = mouseX * .001
+    targetY = mouseY * .0
+    const elapsedTime = clock.getElapsedTime()
+    sphere.rotation.z = 0.5 * elapsedTi
+    sphere.rotation.y += .5 * (targetX - sphere.rotation.y)
+    sphere.rotation.x += .05 * (targetY - sphere.rotation.x)
+    sphere.position.z += -.05 * (targetY - sphere.rotation.
+    
+    const r1 = Date.now() * 0.0009;
+    sphereMercury.rotation.z = 1.2 * elapsedTime
+    sphereMercury.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
+    sphereMercury.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
+    sphereMercury.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
+    sphereMercury.position.x = 3.5 * Math.cos(r1)
+    sphereMercury.position.y = 1.5 * Math.sin(r
+    const r2 = Date.now() * 0.0007;
+    sphereVenus.rotation.z = 1.2 * elapsedTime
+    sphereVenus.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
+    sphereVenus.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
+    sphereVenus.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
+    sphereVenus.position.x = 4.5 * Math.cos(r2)
+    sphereVenus.position.y = 2 * Math.sin(r
+    //sphereEARTH.position.y = -1
+    sphereEARTH.rotation.z = 1.2 * elapsedTime
+    sphereEARTH.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
+    sphereEARTH.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
+    sphereEARTH.position.z += -.05 * (targetY - sphereEARTH.rotation.
+    const r3 = Date.now() * 0.000
+    sphereEARTH.position.x = 6 * Math.cos(r3)
+    sphereEARTH.position.y = 2.5 * Math.sin(r3)
+    // sphereEARTH.position.z = 0.1 * Math.sin(r)
+    sphereMOON.position.x = -0
+    const r4 = Date.now() * 0.0005;
+    sphereMars.rotation.z = 1.2 * elapsedTime
+    sphereMars.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
+    sphereMars.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
+    sphereMars.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
+    sphereMars.position.x = 7 * Math.cos(r4)
+    sphereMars.position.y = 3.6 * Math.sin(r
+    const r5 = Date.now() * 0.0004;
+    sphereJupiter.rotation.z = 1.2 * elapsedTime
+    sphereJupiter.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
+    sphereJupiter.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
+    sphereJupiter.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
+    sphereJupiter.position.x = 8 * Math.cos(r5)
+    sphereJupiter.position.y = 4.3 * Math.sin(r
+    const r6 = Date.now() * 0.0003;
+    sphereSaturn.rotation.z = 1.2 * elapsedTime
+    sphereSaturn.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
+    sphereSaturn.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
+    sphereSaturn.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
+    sphereSaturn.position.x = 9 * Math.cos(r6)
+    sphereSaturn.position.y = 5.5 * Math.sin(r
+    const r7 = Date.now() * 0.00025;
+    sphereUranus.rotation.z = 1.2 * elapsedTime
+    sphereUranus.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
+    sphereUranus.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
+    sphereUranus.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
+    sphereUranus.position.x = 10 * Math.cos(r7)
+    sphereUranus.position.y = 6 * Math.sin(r
+    const r8 = Date.now() * 0.0002;
+    sphereNeptune.rotation.z = 1.2 * elapsedTime
+    sphereNeptune.rotation.y += .05 * (targetX - sphereEARTH.rotation.y)
+    sphereNeptune.rotation.x += .05 * (targetY - sphereEARTH.rotation.x)
+    sphereNeptune.position.z += -.05 * (targetY - sphereEARTH.rotation.x)
+    sphereNeptune.position.x = 10.8 * Math.cos(r8)
+    sphereNeptune.position.y = 6.7 * Math.sin(r8)
+      
+    cube.rotation.z = 0.01 * elapsedTime
+    cube.rotation.y += .5 * (targetX - sphere.rotation.y)
+    cube.rotation.x += .05 * (targetY - sphere.rotation.x)
+    cube.position.z += -.05 * (targetY - sphere.rotation.x)
+    
+    cube.rotation.x += 0.002;
+    cube.rotation.y += 0.002;
+    renderer.render(scene, camera);
+   }
+   // We will need to call this function from somewhere
+   r
