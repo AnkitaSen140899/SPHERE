@@ -144,7 +144,7 @@ scene.add(cube);
 const pointLight = new THREE.PointLight(0xffffff, 2)
 pointLight.position.x = 0
 pointLight.position.y = 0
-pointLight.position.z = 0
+pointLight.position.z = 10
 scene.add(pointLight)
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 1)
