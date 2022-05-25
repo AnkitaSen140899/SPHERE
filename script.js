@@ -238,4 +238,4 @@ function render() {
     renderer.render(scene, camera);
    }
    // We will need to call this function from somewhere
-   r
+   render();
