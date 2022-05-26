@@ -35,7 +35,7 @@ const textureLoader = new THREE.TextureLoader();
          function createPathStrings(filename) {
            const basePath = "./";
            const baseFilename = basePath + filename;
-           const fileType = ".png";
+           const fileType = ".jpg";
            const sides = ["ft", "bk", "up", "dn", "rt", "lf"];
            const pathStings = sides.map(side => {
              return baseFilename + "_" + side + fileType;
