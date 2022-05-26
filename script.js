@@ -31,6 +31,30 @@ const SaturnRinggeometry = new THREE.RingBufferGeometry(0.5,0.65,60);
 const Uranusgeometry = new THREE.SphereBufferGeometry(0.35, 64, 64);
 const Neptunegeometry = new THREE.SphereBufferGeometry(0.3, 64, 64);
 
+function createPathStrings(filename) {
+           const basePath = "./";
+           const baseFilename = basePath + filename;
+           const fileType = ".png";
+           const sides = ["ft", "bk", "up", "dn", "rt", "lf"];
+           const pathStings = sides.map(side => {
+             return baseFilename + "_" + side + fileType;
+           });
+           return pathStings;
+}
+
+let skyboxImage = "Star";
+function createMaterialArray(filename) {
+           const skyboxImagepaths = createPathStrings(filename);
+           const materialArray = skyboxImagepaths.map(image => {
+             let texture = new THREE.TextureLoader().load(image);
+             return new THREE.MeshBasicMaterial({ map: texture, side: THREE.BackSide });
+           });
+           return materialArray;
+}
+
+
+const materialArray = createMaterialArray(skyboxImage);
+
 // This scene will be a 3D world where 3D objects will be added inside it.
 
 var scene = new THREE.Scene();
@@ -117,11 +141,11 @@ var sphereSaturnRing = new THREE.Mesh(SaturnRinggeometry,SaturnRingMAterial);
 // Material is a layer that will be added on the geometry
 var EARTHmaterial = new THREE.MeshBasicMaterial({transparent: true,opacity: 1,metalness: 0,roughness: 0.3, map: normalTexture});
 var SUNmaterial = new THREE.MeshBasicMaterial({transparent: true,opacity: 1,metalness: 0,roughness: 0.3, map: normalTextureSUN});
-var material = new THREE.MeshBasicMaterial({map: normalTexturestar, side: THREE.BackSide});
+
         
 //  // Creating a mesh object from the box geometry and a material
 var sphere = new THREE.Mesh(SUNgeometry, SUNmaterial);
-var cube = new THREE.Mesh(geometry, material);
+var cube = new THREE.Mesh(geometry, materialArray);
 var sphereEARTH = new THREE.Mesh(EARTHgeometry,EARTHmaterial);
 // // Adding that cube in scene
 scene.add(sphere);
