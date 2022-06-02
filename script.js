@@ -281,8 +281,8 @@ const textureLoader = new THREE.TextureLoader();
                 sphereNeptune.position.y = 6.7 * Math.sin(r8)
     
                 
-//                 cube.rotation.x += 0.002;
-//                 cube.rotation.y += 0.002;
+                cube.rotation.x += 0.002;
+                cube.rotation.y += 0.002;
                 renderer.render(scene, camera);
             }
             // We will need to call this function from somewhere
